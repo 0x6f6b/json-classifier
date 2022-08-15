@@ -53,7 +53,7 @@ def recursive_count(json_data):
 
 # iterate over all files in all subdirectories and their subdirectories etc.
 bar = IncrementalBar('Processing', max=len(list(Path('.').rglob('*.json'))))
-for path in Path('./Metadata Fixed').rglob('*.json'):
+for path in Path('./Metadata With Categories').rglob('*.json'):
     with open(path) as f:
         # if the file is called "f_full_names.json" or "m_full_names.json"
         # continue to the next file in the for loop
@@ -68,6 +68,8 @@ for path in Path('./Metadata Fixed').rglob('*.json'):
 bar.finish()
 
 # output the keys and values and how many times they appear in ascending order
+print(examples)
+
 print("Keys:")
 for key, value in sorted(count["keys"].items(), key=lambda x: x[1]):
     if key != "version":
